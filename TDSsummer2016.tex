@@ -1,0 +1,312 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.1 distribution.
+%   Version 4.1r of REVTeX, August 2010
+%
+%   Copyright (c) 2009, 2010 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[aip,jap,12 pt,preprint]{revtex4-1}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{subfig} 
+
+\graphicspath{{C:/Users/John/Documents/Phys4410/Lab1}}
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\begin{document}
+
+\preprint{APS/123-QED}
+
+\title{Phonon Mapping in Flowing Equilibrium}% Force line breaks with \\
+
+
+\author{John Newman, Jacob Ruff, Lucas Lindsay}
+\affiliation{%
+ School of Applied and Engineering Physics, Cornell University, Ithaca, NY 14853
+}%
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+We aim to verify the first-principles methods outlined in Ward, et al, by comparing predicted phonon measurements with experimental measurements using x-ray radiation. Such methods have been found to successfully predict that lattice thermal conductivity of silicon, germanium and diamond, but their predictions on exact phonon populations have yet to be fully proven. However, distinct shifts in phonon populations in the presence of a thermal current has been observed using synchrotron x-ray radiation. By comparing the predicted perturbative effect with this observable shift in phonon population, we can determine whether or not it is possible to use this method to forward model phonon modes, and by extension, the thermal conductivity of a material under the influence of a thermal current.
+
+\end{abstract}
+
+\pacs{Valid PACS appear here}% PACS, the Physics and Astronomy
+                             % Classification Scheme.
+%\keywords{Suggested keywords}%Use showkeys class option if keyword
+                              %display desired
+\maketitle
+
+%\tableofcontents
+
+
+\section{\label{sec:level1} Introduction}
+Phonons, periodic quasiparticles which describe the periodic atomic vibrations around the equilibrium positions in a lattice, are one of the primary agents by which heat propagates within a crystalline solid (Xu, pg 1). The energy of these phonons are related to the momentum wavevector k by an intrinsic property of the material known as the phonon dispersion relation (Xu, pg 27). Several phonons that exist at a certain wavevector can be further distinguished into different groups, known as phonon modes, by their orthogonal polarizations. For normal scattering processes, the total phonon population flux remains the same, and temperature can travel through a crystal without loss. However, collisions often occur where an outgoing phonon interacts with a reciprocal lattice vector, reducing the flux of phonons (Kittel 125). These inelastic collisions in which there is a net loss in phonon momentum are known as Umklapp processes, and play a dominant role in the thermal resistivity in low defect crystals at high temperatures. In the context of x-ray scattering measurements, these thermal vibrations manifest themselves as an attenuation of the Bragg Peaks and a diffuse background that with a much smaller magnitude (Xu, pg 2).  \\
+$\indent$ Due to the importance of phonons to lattice dynamics and the properties of materials, numerous attempts have been made to develop predictive phonon transport models. In the case of thermal equilibrium, this can be achieved through Bose-Einstein statistics and the phonon dispersion curves. However, once equilibrium has been lost, phonon populations no longer follow Bose-Einstein statistics, introducing a perturbative effect which in turn influences thermal conductivity (Ruff slide 9).  Calculating phonon populations under these conditions is difficult, since it requires a microscopic description of the harmonic and anharmonic forces inside of the crystal which give rise to inelastic scattering (Ward 1). Some attempts have been made to use empirical interatomic potentials as fitting parameters in order to obtain simulations on phonon transport (Ward reference 15). Despite agreement with a small set of lattice properties, such as lattice constant and cohesive energies, empirical potentials only enable the modeling of well-studied materials in certain conditions; motivating the need for a predictive numerical model that calculates the interatomic forces without using adjustable parameters (Ward). \\
+$\indent$ Ward, et al demonstrated the capability of density functional perturbative theory (DFPT) to calculate the harmonic and anharmonic interatomic force constants (IFCs) of semiconducting materials under the influence of a thermal gradient. From these quantities, the authors then applied the linear Boltzmann transport equation in order to predict the thermal conductivities of silicon, diamond and germanium that demonstrated “very good overall agreement with the data, lying within 10\%-15\% of the measured values over the wide temperature range considered” (Ward 4). \\
+$\indent$However, the calculation of interatomic force constants, and then integrating across phonon populations in order to obtain a scalar such as thermal conductivity leaves ample room for a cancellation of errors among the phonon modes (Not really expressed by Ward, but many phonon mode terms appear in section III in equation 7 for instance. In all honesty I do not know if I can make this claim. Will definitely ask questions on Thursday) Although the DFPT demonstrates remarkable agreement with the phonon dispersion curve that arises from harmonic IFCs, their accuracy with respect to phonon populations under a thermal gradient remains uncertain.  Furthermore, Ward, et al predicts perturbative effects that are linear (Ward 3) with thermal gradient as long as the gradient stays small, calling into question the point at which the perturbative effect is no longer linear with the gradient.  Such questions motivate the utility of a method to measure separate phonon modes under flowing equilibrium.\\
+$\indent$In his talk on the APS March meeting in San Antonio, author Jacob Ruff presented the capabilities of synchrotron radiation at the Cornell High Energy Synchrotron Source (CHESS) to measure phonon populations under the influence of a thermal current (Jacob Ruff APS Meeting). The high intensity and collated beams from synchrotron radiation allow for the resolution of phonon energies that are around six orders of magnitude less than that of x-rays (Xu 4). Although such diffuse x-ray scattering integrates over all present phonon modes, it is possible to isolate single modes by aligning the scattering vector with specific phonon mode polarizations (Xu pg 30). Thus, Ruff has shown that phonon modes can be extracted from such scattering measurements; making it an invaluable tool to evaluate predictive models, such as the one mentioned above. \\
+$\indent$This paper aims to use the methods outlined above to match theory with experiment. Using data provided by Lucas Lindsey (Oak Ridge National Laboratory), who has worked on the development of the ab initio methods with D.A. Broido, one of the main authors of the Physics Review paper, we first seek to create thermal diffuse scattering patterns commensurate with the theory. Choosing from diamond, silicon, and germanium, we then seek the crystal material, orientation, and phonon mode that should exhibit the greatest change in response to a known thermal gradient. Since the intensity of thermal diffuse scattering are many magnitudes (approximately six) lower than Bragg scattering (Xu 4), it is necessary to isolate particular regions that will cause a noticeable change under a thermal gradient. At this point, we will then construct a thermal mount that enables to create gradients along particular orientations in a sample at room temperature (300K). Once we confirm that the phonon modes behave as expected for our test case, we will then use the thermal mount to evaluate the validity of Lindsay’s predictive model in the First Brillouin Zone of various materials. We hope that such predictive modeling will in turn enable us to derive a scattering-dependent thermal conductivity that would indicate the next step in our understanding of the microscopic description of these semiconducting materials. 
+\section{\label{sec:level1} Theory}
+The aim of these simulations is to obtain the diffuse scattering patterns of various phonon modes across different orientations of the First Brillouin Zone (FBZ), the unit cell of the reciprocal lattice. There are 3n normal phonon modes inside of a crystal lattice, where n corresponds to the number of atoms in the primitive cell of a lattice. Silicon, germanium and diamond all have Fd3m space groups, which contain a 2-atom, monatomic primitive cell, and as such, have six distinct phonon modes. Phonon frequencies are the eigenvalue solutions to the eigenvector equation (Xu 31):
+\begin{equation}
+\textbf{D(k)} \cdot \epsilon_{\textbf{k}, j} = \omega_{\textbf{k}, j}^2 \epsilon_{\textbf{k}, j}
+\end{equation}
+where $\textbf{D(k)}$ is known as the dynamical matrix, and $\omega_{\textbf{k}, j}$ corresponds to the frequency of phonon mode $j$ at wavevector $\textbf{k}$. The dynamical matrix can be further broken down into the real-space harmonic interatomic force constants, which treats nucleic motions at the vicinity of equilibrium points as multi-dimensional harmonic oscillators:
+\begin{equation}
+D^{\alpha , \beta}_{s, s'}(\textbf{k}) = -\sum_{m'} \frac{\Phi^{\alpha , \beta}_{s, s'} (\textbf{R}_{m, m'})}{\sqrt{\mu_{s} \mu_{s'}}} \exp(i \textbf{k} \cdot \textbf{R}_{m, m'})
+\end{equation}
+where $\Phi^{\alpha , \beta}_{s, s'}$ describes the interatomic forces that acquired using $\textit{ab initio}$ Density Functional Perturbation. Further details of this method are contained in the references. The equation above demonstrates how the interatomic constants in real space correspond to the calculation of the dynamical matrix in reciprocal space, which can then be used to determine the phonon dispersion relation of the various phonon modes (Ward 2). At this point, Ward introduces third-order anharmonic IFCs that lead to the first-order perturbations on the phonon modes. \\
+$\indent$ In the absence of a thermal current, phonon populations can be determined using Bose-Einstein statistics, and the dispersion relation of the particular material:
+\begin{equation}
+\eta_0(\textbf{k}, j) = \frac{1}{e^{\hbar \omega(\textbf{k}, j)/k_{B}T} - 1}
+\end{equation}
+where $\omega(\textbf{k}, j)$ is the phonon dispersion relation. However, once a thermal gradient is applied, Bose-Einstein statistics are no longer sufficient to fully describe phonon populations. The thermal gradient introduces a small perturbation to this distribution, which Dr. Lindsay describes as:
+\begin{equation}
+\eta_1(\textbf{k}, j) = \frac{\partial \eta_0(\textbf{k}, j)}{\partial (\hbar \omega_{\textbf{k}, j})} = \frac{-\eta_0(\textbf{k}, j) (\eta_0(\textbf{k}, j) + 1)}{k_{B}T}\vec{\nabla} T \cdot \textbf{F}_{\textbf{k}, j}
+\end{equation}
+where $\vec{\nabla} T$ is the temperature gradient, and $\textbf{F}$ is a measure of how far a phonon mode is from equilibrium. This F value is obtained using the third-harmonic IFCs and resulting Boltzmann Transport Equation, as discussed in the references.\\
+$\indent$ Once we apply this perturbative effect to phonon populations, we then derive how such changes would manifest themselves in the scattering pattern of the crystal. This derivation begins with the real displacement of an atom away from equilibrium, which is a superposition of all of the phonon modes (Xu 27):
+\begin{equation}
+\textbf{u}_{m, s} = Re\bigg[\frac{1}{\sqrt{\mu_s}}\sum_{\textbf{k}, j} a_{\textbf{k}, j} \textbf{e}_{\textbf{k}, j, s} \exp(i \textbf{k} \cdot \textbf{R}_m - i\omega_{\textbf{k}, j}t + i\phi_{\textbf{k}, j})\bigg]
+\end{equation}
+where $\textbf{u}$ is the displacement of the s-th atom in the m-th unit cell, $\mu$ is the mass of the s-th atom, $\phi$ is an arbitrary phase factor, $\textbf{e}$ is the polarization of the j-th phonon mode, and $a$ is the amplitude of the normal mode. Considering each atom as a multi-dimensional harmonic oscillator, $a$ is a measure of distance from equilibrium modulated by the mass of the atom, $\textbf{e}$ determines the direction of the oscillation, and the exponential determines the phase of the oscillation.  The average kinetic energy of such a system containing N such particles classically comes out (Xu 27):
+\begin{equation}
+\langle KE \rangle = \frac{1}{2}\sum_{m, s}\mu_s \left\langle \big(\frac{d \textbf{u}_{m, s}}{dt} \big)^2 \right\rangle
+= \frac{N}{4}\sum_{\textbf{k}, j} \langle a^2_{\textbf{k}, j} \rangle \omega^2_{\textbf{k}, j}
+\end{equation}
+We then solve for the kinetic energy of a quantum harmonic oscillator, taking into account the Bose-Einstein distribution:
+\begin{eqnarray}
+\langle KE \rangle = \sum_{\textbf{k}, j} \frac{\hbar \omega_{\textbf{k}, j}}{2} \big(\frac{1}{e^{\hbar \omega_{\textbf{k}, j}/k_B T} - 1} + \frac{1}{2} \big) \\ = \sum_{\textbf{k}, j} \frac{\hbar \omega_{\textbf{k}, j}}{2} \big(\eta_0 + \eta_1 + \frac{1}{2} \big)
+\end{eqnarray}
+It is in Eq. 8 that we depart from Xu’s notation, and replace the Bose-Einstein term with the perturbative correction term, $\eta_1$, calculated above and $\eta_0$ is simply the Bose-Einstein distribution. Comparing these two terms that we have for the total mean kinetic energy of the system, we then solve for the generalized $a$ coordinate:
+\begin{equation}
+a^2_{\textbf{k}, j} = \frac{2\hbar}{N\omega_{\textbf{k}, j}}\big(\eta + \frac{1}{2}\big)
+\end{equation}
+where $\eta = \eta_0 + \eta_1$.\\
+$\indent$Having developed the theory behind phonons, we now move on to the theory of x-ray scattering, and how the perturbative effects of phonons manifest themselves in scattering images. \\
+$\indent$Considering a perfect crystal with n atoms per unit cell, and a total of N unit cells, the total scattering intensity at scattering vector q is given by:
+\begin{equation}
+I = I_e \left\langle \lvert \sum^N_{m=1} \sum^n_{s=1} f_s \exp[-i \textbf{q} \cdot (\textbf{R}_m + \tau_s + \textbf{u}_{m, s})]\rvert ^2 \right\rangle
+\end{equation}
+where the scattering I measures the photon flux, $f_s$ is the atomic form factor of the s-th atom in the unit cell, and $\tau_s$ is the position of the s-th atom inside of the unit cell. Separating the time-independent factors out of the brackets yields the equation:
+\begin{eqnarray}
+I(\textbf{q})= I_e \sum_{m, m'} \sum_{s, s'}f_s f_{s'}^* e^{i \textbf{q}(\textbf{R}_{m'} - \textbf{R}_m + \tau_{s'} - \tau_s)} \left\langle 
+e^{i \textbf{q} \cdot (\textbf{u}_{m', s'} -  \textbf{u}_{m, s})} \right\rangle \\
+I(\textbf{q})=I_e \sum_{m, m'} \sum_{s, s'}f_s f_{s'}^* e^{i \textbf{q}(\textbf{R}_{m, m'} + \tau_{s,s'})} e^{\left\langle \frac{-1}{2} [\textbf{q} \cdot (\textbf{u}_{m', s'} -  \textbf{u}_{m, s}) \right\rangle}
+\end{eqnarray}
+where the second equation comes as a result of the equality relation $\langle exp(iA)\rangle$ = $exp(-\langle A^2 \rangle)/2$ in a harmonic system (Xu 29).\\
+$\indent$ Further analyzing this time-averaged term, we then separate the exponential into its constituent terms:
+\begin{eqnarray}
+&\frac{-1}{2} [\textbf{q} \cdot (\textbf{u}_{m', s'} -  \textbf{u}_{m, s}) \rangle \\
+&= \frac{-1}{2} \langle (\textbf{q} \cdot (\textbf{u}_{m, s})^2 \rangle \frac{-1}{2} \langle (\textbf{q} \cdot (\textbf{u}_{m', s'})^2 \rangle + \langle  (\textbf{q} \cdot (\textbf{u}_{m, s})(\textbf{q} \cdot (\textbf{u}_{m', s'}) \rangle \\
+&= -M_s(\textbf{q}) - M_{s'}(\textbf{q}) + G_{m, m', s, s'}(\textbf{q})
+\end{eqnarray}
+where $M_s(\textbf{q})$ is known as the Debye-Waller factor, which represents an atom’s time-averaged deviation from equilibrium, and $G_{m, m’, s, s’}(\textbf{q})$ is the correlation of motion between the two atoms (m,s) and (m’, s’).  These terms can in turn be related to the generalized coordinate $a$, demonstrating the influence that the phonons and their dispersion relations will have on a given scattering measurement:
+\begin{eqnarray}
+M_s(\textbf{q}) = \frac{1}{2}\langle (\textbf{q} \cdot \textbf{u}_{m, s})^2 \rangle \\ 
+= \frac{1}{4 \mu_s}\sum_{k, j}\langle a^2_{k, j} \rangle |\textbf{q} \cdot e_{k, j, s}|^2 \\
+G_{m, m', s, s'}(\textbf{q}) = \langle (\textbf{q} \cdot \textbf{u}_{m, s})(\textbf{q} \cdot \textbf{u}_{m', s'})\rangle \\
+= \sum_{k, j} \frac{\langle a _{k, j}^2 \rangle}{2\sqrt{\mu_{s} \mu_{s'}}}(\textbf{q} \cdot e_{k, j, s})(\textbf{q} \cdot e_{k, j, s'})e^{ik \cdot R_{m, m'}}
+\end{eqnarray}
+Calculating these exact scattering intensities would take a prohibitive amount of computing runtime, and so we instead expand the total scattering intensity. \\
+$\indent$The zeroth order intensity term represents the Bragg Peaks in reciprocal space that arise when the scattering vector q perfectly corresponds with a reciprocal lattice vector K. This term is slightly attenuated by the Debye-Waller factor, as well as defects in the crystal, which serve to “smear” the total scattering away from these peaks, and give rise to the higher order terms of the expansion. \\
+\begin{equation}
+I_1(\textbf{q}) = N I_e \sum^n_{s, s'} \sum^N_{m} e^{-i\textbf{q} \cdot R_m} f_s f_{s'} e^{-i\textbf{q}\cdot \tau_{s, s'}} e^{-M_s - M_{s'}}G_{m, s, s'}(\textbf{q})
+\end{equation}
+We finally can simplify these terms into values that we have already calculated, or are computed from Dr. Lindsay's simulation:
+\begin{equation}
+I_1 = N\hbar I_e \sum^{3n}_{j = 1} \frac{\eta_{q,j}}{\omega_{q, j}}|\sum^n_{s=1}\frac{f_s}{\sqrt{\mu_s}}exp(-M_{q, j} - i(q \cdot \tau_s))(q \cdot e_j)|^2
+\end{equation}
+where N is an arbitrary (but large) number of atoms in the crystal, $\hbar$ is the reduced Planck’s constant, $I_e$ is the scattering from a single electron, $\eta$ is the exact phonon population, $\omega$ is the frequency, $M$ is the Debye-Waller factor, $f$ is the atomic form factor, $\mu$ is the mass of the atom, $\tau$ is the lattice site within the unit cell, q is the scattering vector and e is the polarization. Note that any quantity with a q,j (scattering vector and phonon mode respectively) subscript is discretely measured from Dr. Lindsay’s, whereas the quantities with s subscript (such as atomic form factor and mass) are well understood and measured quantities.\\
+$\indent$
+Now that we have developed the theory behind first-order thermal diffuse scattering, we not well address the role of the numerical simulation, which predicts how thermal gradients will influence the six phonon populations, and in turn, their scattering intensity patterns.
+\section{\label{sec:level1} Numerical Simulation}
+In this section of the paper, we demonstrate the capabilities of the codes and a few examples of first order scattering intensity patterns for the three materials under investigation. For each scattering vector $\textbf{q}$, Dr. Lindsay provided its corresponding phonon mode, frequency, and perturbative quantity $F$. This F value, as stated in the theory section, influences the phonon population eta and is linear with the thermal gradient. With this information, we calculated two different phonon distributions: the Bose-Einstein distribution and the phonon distribution with an applied thermal gradient of 1K per angstrom along the x-axis.  \\
+$\indent$ Using these two values of $\eta$, we then generated the predicted thermal diffuse scattering patterns with and without an applied thermal current. Thus, by subtracting the values of the two quantities at each point, we generated a third set of plots which indicated the locations in the FBZ which exhibited the greatest dependence on the thermal current. Below are scattering patterns which compare the relative intensities of different materials along different orientations.\\
+$\indent$ The following graphs demonstrate the thermal diffuse scattering of an acoustic mode along the HL plane with a gradient along (100) direction:
+\begin{figure}[htb!]
+\leavevmode
+\subfloat[Acoustic Di TDS XZ Plane (K = 0)]{\includegraphics[width=0.35\textwidth]{diamond1toscale.png}\label{fig:f1}}
+\subfloat[Acoustic Si TDS XZ Plane (K = 0)]{\includegraphics[width=0.35\textwidth]{silicon1toscale.png}\label{fig:f1}}
+\subfloat[Acoustic Ge TDS XZ Plane at K = 0]{\includegraphics[width=0.35\textwidth]{germanium1toscale.png}\label{fig:f2}}
+\end{figure}
+\\
+These acoustic phonon modes behave exactly as we expect them to in the middle of the First Brillouin Zone. Acoustic phonon modes tend to have low frequencies towards the center of the zone, making it so that their $\eta_0$ value (given by $\eta_0 = \frac{1}{e^{\hbar \omega / k_BT}-1}$), will thus be larger in this region. Also, germanium has a higher level of scattering than silicon or diamond, as a result of the ratio between atomic form factor to the square root of atomic mass (the $f_s$/$\sqrt{\mu_s}$ term). \\
+The next set of graphs look at the same orientation as those above, except rather than looking at the total scattering, they look at the difference that arises due to the applied thermal gradient.\\
+\begin{figure}[htb!]
+\leavevmode
+\subfloat[Ac Di Difference XZ Plane (K = 0)]{\includegraphics[width=0.35\textwidth]{diamond1differencetoscale.png}\label{fig:f1}}
+\subfloat[Ac Si Difference XZ Plane (K = 0)]{\includegraphics[width=0.35\textwidth]{silicon1differencetoscale.png}\label{fig:f1}}
+\subfloat[Ac Ge Difference XZ Plane at K = 0]{\includegraphics[width=0.35\textwidth]{germanium1differencetoscale.png}\label{fig:f2}}
+\end{figure}
+\\
+The general form of all of these figures match each other very closely, with germanium having the greatest difference due to the thermal current (about a max of 4.5E$^{-15}$) followed by silicon (max of 2.4E$^{-15}$) and diamond (max 3.2E$^{-16}$. \\
+$\indent$ Unlike the acoustic phonon modes, differences between the three materials are visible for the optical phonon mode scattering patterns. \\
+\begin{figure}[htb!]
+\leavevmode
+\subfloat[Optical Di TDS XZ Plane (K = 0)]{\includegraphics[width=0.35\textwidth]{diamond4toscale.png}\label{fig:f1}}
+\subfloat[Optical Si TDS XZ Plane (K = 0)]{\includegraphics[width=0.35\textwidth]{silicon4toscale.png}\label{fig:f1}}
+\subfloat[Optical Ge TDS XZ Plane at K = 0]{\includegraphics[width=0.35\textwidth]{germanium4toscale.png}\label{fig:f2}}
+\end{figure}
+\\
+$\indent$Although it is difficult to see due to the smaller signal, the scattering in diamond seems to have more symmetries than that of silicon and germanium. As a whole though, the response of optical phonons are on two orders of magnitude less than that of acoustic phonons, making it difficult to see when compared to the strong acoustic signal at the center of the FBZ. Furthermore, the difference between the optical modes with and without a thermal current is four orders of magnitude less than that of the acoustic modes, as shown in the figures below.\\
+\begin{figure}[htb!]
+\leavevmode
+\subfloat[Ac Di Difference (K = 0)]{\includegraphics[width=0.35\textwidth]{diamond4differencetoscale.png}\label{fig:f1}}
+\subfloat[Ac Si Difference (K = 0)]{\includegraphics[width=0.35\textwidth]{silicon4differencetoscale.png}\label{fig:f1}}
+\subfloat[Ac Ge Difference (K = 0)]{\includegraphics[width=0.35\textwidth]{germanium4differencetoscale.png}\label{fig:f2}}
+\end{figure}
+\\
+The next figures demonstrate the one dimensional cross-sections of the predicted first order scattering along high symmetry directions ((100) in the case of the following graphs). These measurements have been taken empirically by Dr. Ruff, and thus allow a more quantitative evaluation of the predictions.
+\begin{figure}[htb!]
+\leavevmode
+\subfloat[Ac 1D Diamond TDS along (100)]{\includegraphics[width=0.35\textwidth]{d100bi1.png}\label{fig:f1}}
+\subfloat[Ac 1D Silicon TDS along (100)]{\includegraphics[width=0.35\textwidth]{s100bi1.png}\label{fig:f1}}
+\subfloat[Ac 1D Ge TDS along (100)]{\includegraphics[width=0.35\textwidth]{g100bi1.png}\label{fig:f2}}
+\\
+\subfloat[Op 1D Diamond TDS along (100)]{\includegraphics[width=0.35\textwidth]{d100bi4.png}\label{fig:f1}}
+\subfloat[Op 1D Silicon TDS along (100)]{\includegraphics[width=0.35\textwidth]{s100bi4.png}\label{fig:f1}}
+\subfloat[Op 1D Ge TDS along (100)]{\includegraphics[width=0.35\textwidth]{g100bi4.png}\label{fig:f2}}
+\end{figure}
+\\
+These figures further show the slight difference between the optical modes of diamond when compared to those of silicon and germanium. The latter two materials have a bump along their optical modes, while the diamond scattering has a more linear slope around H = 0.5. It should be noted that the thermal current is significantly increased in these figures. In fact, with the limited number of data points in each of these measurements (16) and the very small difference between the scattering with and without a thermal gradient, these data figures do not reveal much. The following figure shows how the lack of discrete points limit the predictive capabilities.
+\begin{figure}
+{\includegraphics[scale=0.5]{d100bi1zoomed.png}}
+\caption{Difference of TDS with and without a thermal current of diamond along (100) near a discrete data point}
+\end{figure}
+\\
+Additional data points near the FBZ would make these figures more useful. These types of graphs can also be generated along any direction of the FBZ, as shown in the following figures, which explore the TDS along (110) (as shown below) and (111).
+\\
+\begin{figure}[htb!]
+\leavevmode
+\subfloat[Ac 1D Diamond TDS along (110)]{\includegraphics[width=0.35\textwidth]{d110bi1.png}\label{fig:f1}}
+\subfloat[Ac 1D Silicon TDS along (110)]{\includegraphics[width=0.35\textwidth]{s110bi1.png}\label{fig:f1}}
+\subfloat[Ac 1D Ge TDS along (110)]{\includegraphics[width=0.35\textwidth]{g110bi1.png}\label{fig:f2}}
+\\
+\subfloat[Op 1D Diamond TDS along (110)]{\includegraphics[width=0.35\textwidth]{d110bi4.png}\label{fig:f1}}
+\subfloat[Op 1D Silicon TDS along (110)]{\includegraphics[width=0.35\textwidth]{s110bi4.png}\label{fig:f1}}
+\subfloat[Op 1D Ge TDS along (110)]{\includegraphics[width=0.35\textwidth]{g110bi4.png}\label{fig:f2}}
+\end{figure}
+\\
+\begin{figure}[htb!]
+\leavevmode
+\subfloat[Ac 1D Diamond TDS along (111)]{\includegraphics[width=0.35\textwidth]{d111bi1.png}\label{fig:f1}}
+\subfloat[Ac 1D Silicon TDS along (111)]{\includegraphics[width=0.35\textwidth]{s111bi1.png}\label{fig:f1}}
+\subfloat[Ac 1D Ge TDS along (111)]{\includegraphics[width=0.35\textwidth]{g111bi1.png}\label{fig:f2}}
+\\
+\subfloat[Op 1D Diamond TDS along (111)]{\includegraphics[width=0.35\textwidth]{d111bi4.png}\label{fig:f1}}
+\subfloat[Op 1D Silicon TDS along (111)]{\includegraphics[width=0.35\textwidth]{s111bi4.png}\label{fig:f1}}
+\subfloat[Op 1D Ge TDS along (111)]{\includegraphics[width=0.35\textwidth]{g111bi4.png}\label{fig:f2}}
+\end{figure}
+Although the simulations display slight differences between the three high-symmetry axis, once again, it is difficult to evaluate the usefulness of these graphs due to a combination of the weakness of the signal and a lack of data points near the center of the FBZ.
+\\
+After establishing that germanium has both the greatest absolute scattering and difference between measurements with and without a thermal current, we then went on the look at the percent difference between scattering with and without thermal current.
+\begin{table}[]
+\centering
+\caption{Percent Difference Between Acoustic TDS with and without a Thermal Current}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+branch index & $q_y$(A$^{-1}$) & Diamond & Silicon & Germanium \\ \hline
+1            & 0.0309                      & -0.0964 & -0.0645 & -0.0319   \\ \hline
+1            & 0.1468                      & -0.0012 & -0.0020 & -0.0132   \\ \hline
+1            & 0.2979                      & -0.0002 & -0.0002 & -0.0027   \\ \hline
+1            & 0.4138                      & -0.0002 & -0.0001 & -0.0012   \\ \hline
+1            & 0.4756                      & -0.0001 & 0.0000  & -0.0009   \\ \hline
+\end{tabular}
+\end{table}
+This table shows that, while although germanium has the greatest level of absolute scattering due to its large atomic form factor, diamond and silicon have a much greater percent difference near the center of the zone.
+\\
+Ultimately, the deciding factor in choosing an ideal test material for evaluating model performance is counting statistics. This calculations will let us evaluate how many incident photons (or, put another way, the amount of measurement time of incident x-ray radiation) it takes for the difference in scattering between a material with and without a thermal gradient will have a signal many times larger than the noise the arises due to uncertainties in measurements. Using Poisson counting statistics, we determine the size of the error bar δ to be:
+\begin{equation}
+\partial \sim \sqrt{\frac{C(I_w + I_{wo})}{2}}
+\end{equation}
+where $I_w$ is the signal with thermal current, $I_{wo}$ is the signal without a thermal current and $C$ is the time elapsed during the measurement. In order to be confident that a given signal is actually due to differences in the thermal gradient, we want the signal difference $D$ divided by the noise $\partial$ to be a set factor $F$:
+\begin{eqnarray}
+D = C(I_w - I_{wo})\\
+\frac{D}{\partial} = \sqrt{\frac{2C}{(I_w + I_{wo})}}(I_w - I_{wo}) = F
+\end{eqnarray}
+\\
+Solving for $C$, this yields:
+\begin{equation}
+C = \frac{(\frac{F}{I_w - I_{wo}})^2(I_w + I_{wo})}{2}
+\end{equation}
+This value represents the number of incident photons needed in order to get a signal over noise ratio F, which in turn corresponds to the amount of time needed in order to get a statistically significant measurement. This calculation yielded that silicon required the least amount of time to acquire a significant signal to noise ratio, as shown in the following table:
+\begin{table}[b]
+\centering
+\caption{Acoustic Phonon Counts Needed to Generate Signal to Noise Ratio of 10 along (010)}
+\label{my-label}
+\begin{tabular}{|c|c|c|c|}
+\hline
+q$\_y$     & Diamond  & Silicon  & Germanium   \\ \hline
+3.09E-02 & 1.35E+18 & 6.58E+17 & 1.41009E+18 \\ \hline
+0.146755 & 7.42E+22 & 5.73E+21 & 1.27106E+22 \\ \hline
+0.297945 & 8.15E+24 & 2.43E+24 & 4.90361E+24 \\ \hline
+0.413824 & 1.72E+25 & 3.26E+25 & 1.0835E+26  \\ \hline
+0.475577 & 5.42E+25 & 1.75E+26 & 5.50352E+26 \\ \hline
+0.591456 & 2.99E+26 & 2.33E+28 & 3.66202E+30 \\ \hline
+\end{tabular}
+\end{table}
+This was initially surprising, since germanium exhibited the greatest signal difference, while diamond had the greatest percent difference of the three materials. Nevertheless, silicon has the right balance of signal strength and difference in order to require the lowest amount of time needed to get a suitable signal over noise ratio. This indicates that silicon is the most suitable material to evaluate Dr. Lindsay’s model. \\
+$\indent$ Finally the last plots that we created were ones that simulated an expanded zone version of the scattering patterns; one that would expand out to the nearest 25 Brillouin zone centers around the (000) peak. By looking at one of the acoustic modes, and expanded around the zone by using Eq. 21, we were able to recreate the pattern obtained by Xu and Chiang, as shown below.
+ \begin{figure}[htb!]
+\leavevmode
+\subfloat[Si Acoustic Logarithmic TDS expanded around (000) for K = 0]{\includegraphics[width=0.53\textwidth]{expandedzonelog.png}\label{fig:f1}}
+\subfloat[Acoustic TDS Simulated for Si Acoustic Phonons by Xu and Chiang [4]{\includegraphics[width=0.32\textwidth]{Comparison.png}\label{fig:f1}}
+\end{figure}
+It should be noted that Xu and Chiang's data extends to the (606) zone centers. Furthermore, the data set only extends to about 3/5 through the FBZ. Therefore, in order to generate the plot, the q value in the data set was added by the relative distance of the closest zone center to the (000) center. Therefore, there a number of regions which lack data points, which may limit the usefulness of these plots. Finally, I generated some plots of the the expected difference in scattering that an applied thermal current would cause around these various zone centers.
+\begin{figure}[htb!]
+\leavevmode
+\subfloat[Acoustic Scattering Around (004) Zone Center]{\includegraphics[width=0.35\textwidth]{004.png}\label{fig:f1}}
+\subfloat[Acoustic Scattering Around (400) Zone Center]{\includegraphics[width=0.35\textwidth]{400.png}\label{fig:f1}}
+\subfloat[Acoustic Scattering Around (404) Zone Center]{\includegraphics[width=0.35\textwidth]{404.png}\label{fig:f2}}
+\end{figure}
+\section{\label{sec:level1} Future Work}
+There are a couple of next steps for this project. We have determined that silicon is the best material to study, due to the fact that it has the lowest count needed to achieve a significant signal to noise ration. Furthermore, the exact units of the data given by Lucas should be carefully examined. Specifically, the data has yet to be scaled by the factor of $I_E$, or the Thomson scattering. Explained in equation 2.52 of [3] (page 29), this scattering represents the total intensity of scattering, and is equal to: 
+\begin{equation}
+I_e(\textbf{q}, d) = I_{incident} \cdot \frac{1}{d^2}\sum_{\alpha = 1,2}(\frac{d\sigma}{d\Omega})_{Thomson}
+\end{equation}
+where $I_{incident}$ is the photon flux of the incident x-ray bean, d is the distance to the observer, and $\alpha$ denotes the outgoing polarization. In the case of linearly polarized synchrotron radiation, this equation can be rewritten as:
+\begin{equation}
+I_e(\textbf{q}, d) = I_{incident} \frac{r_o^2}{d^2}[sin^2(\phi) + cos^2(\phi)cos^2(2\theta)]
+\end{equation}
+where $2\theta$ is the scattering angle, and $\phi$ is the angle between the scattering plane, and the plane defined by the polarization and the direction of the incident beam. \\
+$\indent$After establishing these values, in order to give the units used in the calculation a little more significance in terms of measurement, it is then important to learn the exact polarizations of the various phonon modes. Once we know these polarizations, we can include this contribution in many of the above equations, which I ignorantly set to 1. \\
+$indent$Finally, if possible, I would learn the mesh and program that Dr. Lindsay used to generate data. The programming suite used is called Quantum Espresso, and can be set up on Linux and/or Ubuntu. This would enable us to make tweaks to the data as needed, and could be used to generate desirable data points in the FBZ. However, despite my efforts, I was not able to figure out the operation of this program suite, and so, in the future, additional data points from Dr. Lindsay could be very valuable, especially near the center of the FBZ, where the acoustic phonon mode populations increase rapidly. 
+\section{\label{sec:level1} Citations}
+$[1]$ Ruff, Jacob, Phonon Mapping in Flowing Equilibrium, APS March Meeting, 2015 \\
+$[2]$ Xu, Ruqing, X-Ray Thermal Diffuse Scattering and its Studies of Lattic Dynamics, University of Illinois at Urbana-Champaign, 2010\\
+$[3]$ A. Wards, D.A. Broido, D.A. Stewart, and G. Deinzer, Ab initio theory of the lattice thermal conductivity in diamond, Physics Review 80, 2009\\
+$[4]$ Xu, Ruqing, Chiang, Tai, Determination of phonon dispersion relations by X-ray thermal diffuse scattering, University of Illinois at Urbana-Champaign, 2005.\\
+
+\end{document}
+%
+% ****** End of file apssamp.tex ******
